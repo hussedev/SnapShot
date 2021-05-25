@@ -6,7 +6,7 @@ const Header = ({ history, handleSubmit }) => {
   return (
     <div>
       <h1>SnapShot</h1>
-      <Form history={history} handleSubmit={handleSubmit} />
+      <Form history={history} />
       <Navigation />
     </div>
   );
