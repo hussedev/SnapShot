@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { FormContext } from "../context/FormContext";
 
-const Form = ({ handleSubmit, history }) => {
-  const [searchEntry, setSearchEntry] = useState("");
+
+const Form = ({ history }) => {
+  const {searchEntry, setSearchEntry, handleSubmit} = useContext(FormContext)
   // update search text state
   const updateSearchInput = e => {
     setSearchEntry(e.target.value);
