@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <ContextProvider>
-        <Router>
+        <Router >
           <div className="container">
             <Route
               render={props => (
@@ -27,7 +27,11 @@ class App extends Component {
                 path="/"
                 render={() => <Redirect to="/mountain" />}
               />
-
+              <Route
+              exact
+              path="/SnapShot"
+              render={() => <div></div>}
+              />
               <Route
                 path="/mountain"
                 render={() => <Item searchTerm="mountain" />}
