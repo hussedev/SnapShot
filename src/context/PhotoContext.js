@@ -1,23 +1,22 @@
 import React, { createContext, useState } from "react";
-import axios from "axios";
-import { apiKey } from "../api/config";
+import ApiClient from "../api/ApiClient"
 export const PhotoContext = createContext();
+
 
 const PhotoContextProvider = props => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { getByTags } = ApiClient();
+
   const runSearch = query => {
-    axios
-      .get(
-        `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
-      )
+    getByTags(query)
       .then(response => {
         setImages(response.data.photos.photo);
         setLoading(false);
       })
       .catch(error => {
         console.log(
-          "Encountered an error with fetching and parsing data",
+          "Encountered an error with parsing data",
           error
         );
       });
